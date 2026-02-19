@@ -40,3 +40,19 @@ a {
     color-scheme: dark;
   }
 }
+
+.leon-container {
+    position: fixed;          /* siempre centrado en viewport */
+    inset: 0;                 /* ocupa toda la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;     /* opcional: no bloquea clicks */
+}
+
+.leon-img {
+    width: 40vw;              /* tamaño relativo a pantalla */
+    max-width: 500px;         /* límite en pantallas grandes */
+    min-width: 250px;         /* evita que se vea pequeña */
+    height: auto;
+}
