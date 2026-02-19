@@ -1,44 +1,33 @@
 "use client";
-import Image from "next/image";
-import styles from "./page.module.css";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import "./globals.css"
-const Home = () => {
 
-  const router = useRouter(); //Esto se hara en el cliente
-  return ( 
+import styles from "./page.module.css";
+
+export default function Home() {
+  return (
     <div className={styles.page}>
 
-  <div className={styles.layout}>
+      <div className={styles.layout}>
 
-    <aside className={styles.characterPanel}>
-      <div className={styles.characterStand}></div>
-      <div className={styles.character}></div>
-    </aside>
+        {/* PANEL PERSONAJE */}
+        <aside className={styles.characterPanel}>
+          <div className={styles.characterStand}></div>
+          <div className={styles.character}></div>
+        </aside>
 
-    <main className={styles.mainPanel}>
-      {/* contenido del juego */}
-    </main>
+        {/* PANEL PRINCIPAL */}
+        <main className={styles.mainPanel}>
+          <h1>Quantum Forge</h1>
+        </main>
 
-  </div>
+      </div>
 
-  {/* ACTION BAR */}
-  <div className={styles.actionBar}>
-    <button className={styles.gameButton}>Inventario</button>
-    <button className={styles.gameButton}>Misiones</button>
-    <button className={styles.gameButton}>Tienda</button>
-  </div>
+      {/* ACTION BAR */}
+      <div className={styles.actionBar}>
+        <button className={styles.gameButton}>Inventario</button>
+        <button className={styles.gameButton}>Misiones</button>
+        <button className={styles.gameButton}>Tienda</button>
+      </div>
 
-</div>
-
-   );
+    </div>
+  );
 }
-
-
-export default Home;
-
- {/* <Link href={"/laotra"}>Si pinchas veras a dios</Link> */}
-      {/*<div className="leon-container">
-        <img src="leon.jpg" className="leon-img" alt="León" />
-      </div>*/}
