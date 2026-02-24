@@ -1,7 +1,18 @@
+/* ================= VARIABLES BASE ================= */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
+/* Dark mode automático */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -10,30 +21,60 @@
   }
 }
 
+/* ================= RESET MODERNO ================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= DOCUMENTO ================= */
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
 }
 
+/* ================= BODY BASE ================= */
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
+  /* Tipografía moderna REAL */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+/* ================= ELEMENTOS BASE ================= */
 
 a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Evita estilos feos por defecto en botones */
+
+button {
+  font-family: inherit;
+}
+
+/* Mejora visual general */
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ================= DARK MODE CONSISTENCY ================= */
 
 @media (prefers-color-scheme: dark) {
   html {
@@ -41,18 +82,30 @@ a {
   }
 }
 
+/* ================= UTILIDADES OPCIONALES ================= */
+
+/* Contenedor de logo flotante */
+
 .leon-container {
-    position: fixed;          /* siempre centrado en viewport */
-    inset: 0;                 /* ocupa toda la pantalla */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    pointer-events: none;     /* opcional: no bloquea clicks */
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
 }
 
+/* Logo */
+
 .leon-img {
-    width: 40vw;              /* tamaño relativo a pantalla */
-    max-width: 500px;         /* límite en pantallas grandes */
-    min-width: 250px;         /* evita que se vea pequeña */
-    height: auto;
+  width: 40vw;
+  max-width: 500px;
+  min-width: 250px;
+
+  height: auto;
+
+  /* Profundidad moderna */
+  filter: drop-shadow(0 25px 50px rgba(0,0,0,0.55));
 }
