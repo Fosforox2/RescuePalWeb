@@ -29,7 +29,7 @@
 /* Marca */
 
 .brand {
-  font-size: 1.35rem;
+  font-size: 1.70rem;
   font-weight: 600;
   letter-spacing: 0.4px;
   margin-left: 18px;
@@ -109,6 +109,32 @@
   z-index: 25;
   padding-top: 110px;
 }
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 22px;
+}
+
+.sidebar button {
+  background: transparent;
+  border: none;
+
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  font-weight: 400;
+
+  padding: 14px 18px;
+  border-radius: 14px;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition: 
+    background 0.25s ease,
+    transform 0.15s ease,
+    color 0.25s ease;
+}
 
 .open {
   left: 0;
@@ -134,13 +160,99 @@
 
   z-index: 1;
 }
+.panel {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: panelEnter 0.6s ease forwards;
+}
+.panel {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: panelEnter 0.6s ease forwards;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
 
+  align-items: center;
+
+  margin-bottom: 120px;
+}
+
+.panel.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.panelImage img {
+  width: 100%;
+  border-radius: 26px;
+  display: block;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+}
+
+.panelText h2 {
+  font-size: 2.2rem;
+  margin-bottom: 22px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+  color: #121212;
+
+  font-style: italic;      /* ← cursiva limpia */
+}
+
+.panelText p {
+  line-height: 1.9;
+  font-size: 1.28rem;      /* ← claramente más grande */
+  color: rgba(0,0,0,0.72);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+
+  font-style: italic;      /* ← cursiva elegante */
+}
+
+/* Alternado visual */
+
+.panel.reverse .panelImage {
+  order: 2;
+}
+
+.panel.reverse .panelText {
+  order: 1;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .panel {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 80px;
+  }
+
+  .panel.reverse .panelImage,
+  .panel.reverse .panelText {
+    order: unset;
+  }
+
+  .panelText h2 {
+    font-size: 1.6rem;
+  }
+}
+
+
+@keyframes panelEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /* LOGO */
 .logo {
   position: absolute;
 
   left: 50%;
-  bottom: 0px;
+  bottom: 100px;
 
   transform: translateX(-50%);
 
@@ -165,6 +277,7 @@
   position: relative;
   margin-top: -140px;
   padding: 40px;
+  z-index: 10;   /* ← clave */
 }
 
 .sheet {
@@ -172,7 +285,17 @@
   backdrop-filter: blur(22px);
   border-radius: 34px;
   padding: 80px 60px;
-  max-width: 960px;
+  max-width: 1280px;
   margin: auto;
-  z-index: 2;
+}
+.sheet h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 90px;
+
+  font-weight: 500;
+  letter-spacing: -0.8px;
+  line-height: 1.1;
+
+  color: #121212;
 }
