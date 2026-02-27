@@ -1,14 +1,9 @@
-/* CONTENEDOR GENERAL */
-
 .page {
   background: #f5f5dc;
   color: #1a1a1a;
   overflow-x: hidden;
   min-height: 100vh;
 }
-
-/* HEADER */
-
 .header {
   position: fixed;
   top: 0;
@@ -25,9 +20,6 @@
 
   z-index: 30;
 }
-
-/* Marca */
-
 .brand {
   font-size: 1.70rem;
   font-weight: 600;
@@ -76,9 +68,6 @@
 .hamburger span:nth-child(3) {
   margin-left: 11px;
 }
-
-/* Estados */
-
 .active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -90,9 +79,6 @@
 .active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
-
-/* SIDEBAR */
-
 .sidebar {
   position: fixed;
   top: 0;
@@ -139,9 +125,6 @@
 .open {
   left: 0;
 }
-
-/* HERO */
-
 .hero {
   position: relative;
   height: 100vh;
@@ -198,21 +181,18 @@
   line-height: 1.15;
   color: #121212;
 
-  font-style: italic;      /* ← cursiva limpia */
+  font-style: italic;
 }
 
 .panelText p {
   line-height: 1.9;
-  font-size: 1.28rem;      /* ← claramente más grande */
+  font-size: 1.28rem;
   color: rgba(0,0,0,0.72);
   font-weight: 400;
   letter-spacing: 0.2px;
 
-  font-style: italic;      /* ← cursiva elegante */
+  font-style: italic;
 }
-
-/* Alternado visual */
-
 .panel.reverse .panelImage {
   order: 2;
 }
@@ -220,9 +200,6 @@
 .panel.reverse .panelText {
   order: 1;
 }
-
-/* Responsive */
-
 @media (max-width: 900px) {
   .panel {
     grid-template-columns: 1fr;
@@ -247,7 +224,6 @@
     transform: translateY(0);
   }
 }
-/* LOGO */
 .logo {
   position: absolute;
 
@@ -270,14 +246,11 @@
   max-width: 70%;
   filter: drop-shadow(0 25px 50px rgba(0,0,0,0.65));
 }
-
-/* CONTENT */
-
 .content {
   position: relative;
   margin-top: -140px;
   padding: 40px;
-  z-index: 10;   /* ← clave */
+  z-index: 10;
 }
 
 .sheet {
@@ -285,7 +258,7 @@
   backdrop-filter: blur(22px);
   border-radius: 34px;
   padding: 80px 60px;
-  max-width: 1280px;
+  max-width: 1580px;
   margin: auto;
 }
 .sheet h1 {
@@ -298,4 +271,105 @@
   line-height: 1.1;
 
   color: #121212;
+}
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 26px;
+}
+
+.dot {
+  width: 30px;
+  height: 4px;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+
+  transition: 
+    transform 0.35s ease,
+    background 0.35s ease,
+    opacity 0.35s ease;
+}
+.dot:hover {
+  opacity: 0.8;
+}
+.activeDot {
+  background: white;
+  transform: scale(1.6);
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+
+  box-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+.footer {
+  margin-top: 140px;
+  background: #111;
+  color: rgba(255,255,255,0.85);
+
+  padding: 70px 40px 35px;
+}
+
+.footerContent {
+  max-width: 1280px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 60px;
+}
+
+.footerBrand h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.footerBrand p {
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+.footerLinks,
+.footerLegal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer button {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.65);
+
+  text-align: left;
+  cursor: pointer;
+
+  transition: color 0.25s ease, transform 0.15s ease;
+}
+
+.footer button:hover {
+  color: white;
+  transform: translateX(4px);
+}
+.footerBottom {
+  margin-top: 55px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+}
+@media (max-width: 900px) {
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .footer {
+    padding: 55px 25px 30px;
+  }
 }

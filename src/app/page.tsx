@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scroll, setScroll] = useState(0);
 
-  useEffect(() => {
+    useEffect(() => {
     const handleScroll = () => {
       setScroll(window.scrollY);
     };
@@ -19,6 +21,36 @@ export default function HomePage() {
 
   const blur = Math.min(scroll / 120, 10);
   const logoOpacity = Math.max(1 - scroll / 350, 0);
+
+  const images = [
+    "/instalaciones1.png",
+    "/instalaciones2.png",
+    "/instalaciones3.png",
+    "/instalaciones4.png",
+  ];
+
+  const [current, setCurrent] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [paused]);
+
+  const handleManualSelect = (index: SetStateAction<number>) => {
+    setCurrent(index);
+    setPaused(true);
+
+    setTimeout(() => {
+      setPaused(false);
+    }, 20000);
+  };
+
 
   return (
     <div className={styles.page}>
@@ -39,7 +71,7 @@ export default function HomePage() {
       <aside className={`${styles.sidebar} ${menuOpen ? styles.open : ""}`}>
         <nav>
           <button>Inicio</button>
-          <button>Adopciones</button>
+          <button onClick={() => router.push("/AnimalesDisponibles")}>Adopciones</button>          
           <button>Contacto</button>
         </nav>
       </aside>
@@ -81,9 +113,7 @@ export default function HomePage() {
                 Somos más que una protectora; 
                 somos un punto de encuentro entre historias que buscan una segunda oportunidad 
                 y personas dispuestas a ofrecerla. Nuestro trabajo se construye 
-                sobre el respeto absoluto hacia los animales, entendiendo que no son 
-                recursos ni pertenencias, sino seres vivos con necesidades, 
-                emociones y capacidad de crear vínculos reales.
+                sobre el respeto absoluto hacia los animales.
               </p>
             </div>
           </div>
@@ -94,7 +124,7 @@ export default function HomePage() {
             </div>
 
             <div className={styles.panelText}>
-              <h2>Adopciones responsables 🐾</h2>
+              <h2>❤️ Adopciones responsables ❤️</h2>
               <p>
                 No se trata solo de encontrar hogar, sino de construir
                 vínculos duraderos. Te acompañamos durante todo el proceso
@@ -105,46 +135,79 @@ export default function HomePage() {
 
         </div>
       </section>
+
       <section className={styles.content}>
         <div className={styles.sheet}>
           <div className={styles.panel}>
+
             <div className={styles.panelImage}>
-              <img src="/dog.jpg" alt="Perro Menú" />
+
+              <img 
+                src={images[current]} 
+                alt="instalaciones" 
+                className={styles.carouselImage}
+              />
+
+              <div className={styles.dots}>
+                {images.map((_, index) => (
+                  <span
+                    key={index}
+                    className={`${styles.dot} ${current === index ? styles.activeDot : ""}`}
+                    onClick={() => handleManualSelect(index)}
+                  />
+                ))}
+              </div>
+
             </div>
 
             <div className={styles.panelText}>
-              <h2>🐾 ¿Quienes somos? 🐾</h2>
+              <h2>🏢 Nuestras Instalaciones 🏢</h2>
               <p>
-                RescuePal nace de una convicción simple pero profunda: 
-                cada animal merece una vida digna, segura y llena de afecto. 
-                Somos más que una protectora; 
-                somos un punto de encuentro entre historias que buscan una segunda oportunidad 
-                y personas dispuestas a ofrecerla. Nuestro trabajo se construye 
-                sobre el respeto absoluto hacia los animales, entendiendo que no son 
-                recursos ni pertenencias, sino seres vivos con necesidades, 
-                emociones y capacidad de crear vínculos reales.
+                Disponemos de unas instalaciones modernas, amplias y cuidadosamente 
+                diseñadas para garantizar el bienestar, la seguridad y la tranquilidad 
+                de cada animal. Cada espacio ha sido pensado para ofrecer un entorno 
+                limpio, luminoso y confortable.
+
+                Nuestro objetivo no es únicamente proporcionar refugio, sino crear 
+                un lugar donde puedan recuperar la confianza y la estabilidad.
               </p>
             </div>
+
           </div>
-
-          <div className={`${styles.panel} ${styles.reverse}`}>
-            <div className={styles.panelImage}>
-              <img src="/cat.jpg" alt="Gato Menú" />
-            </div>
-
-            <div className={styles.panelText}>
-              <h2>Adopciones responsables 🐾</h2>
-              <p>
-                No se trata solo de encontrar hogar, sino de construir
-                vínculos duraderos. Te acompañamos durante todo el proceso
-                para asegurar una adopción consciente.
-              </p>
-            </div>
-          </div>
-
         </div>
       </section>
+  <footer className={styles.footer}>
+
+    <div className={styles.footerContent}>
+
+      <div className={styles.footerBrand}>
+        <h3>RescuePal</h3>
+        <p>
+          Comprometidos con el bienestar animal y la adopción responsable.
+        </p>
+      </div>
+
+      <div className={styles.footerLinks}>
+        <button>Inicio</button>
+        <button>Adopciones</button>
+        <button>Contacto</button>
+        <button>Sobre nosotros</button>
+      </div>
+
+      <div className={styles.footerLegal}>
+        <button>Aviso Legal</button>
+        <button>Política de Privacidad</button>
+        <button>Política de Cookies</button>
+      </div>
 
     </div>
+
+    <div className={styles.footerBottom}>
+      © {new Date().getFullYear()} RescuePal. Todos los derechos reservados.
+    </div>
+
+  </footer>
+    </div>
+    
   );
 }

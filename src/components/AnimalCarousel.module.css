@@ -1,0 +1,114 @@
+.wrapper {
+  margin: 180px 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.4rem;
+  margin-bottom: 100px;
+}
+
+.carouselContainer {
+  position: relative;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 480px;
+  height: 520px;
+  transform: translate(-50%, -50%);
+  transition: transform 0.7s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.7s ease,
+              filter 0.7s ease;
+  cursor: default;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+/* ESTADOS */
+
+.center {
+  transform: translate3d(-50%, -50%, 0) scale(1);
+  opacity: 1;
+  filter: none;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.left {
+  transform: translate3d(-45vw, -50%, 0) scale(0.65);
+  opacity: 0.35;
+  filter: blur(4px);
+  z-index: 4;
+}
+
+.farLeft {
+  transform: translate3d(-75vw, -50%, 0) scale(0.45);
+  opacity: 0.15;
+  filter: blur(8px);
+  z-index: 3;
+}
+
+.right {
+  transform: translate3d(35vw, -50%, 0) scale(0.65);
+  opacity: 0.35;
+  filter: blur(4px);
+  z-index: 4;
+}
+
+.farRight {
+  transform: translate3d(65vw, -50%, 0) scale(0.45);
+  opacity: 0.15;
+  filter: blur(8px);
+  z-index: 3;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.8rem;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow:first-of-type {
+  left: 4%;
+}
+
+.arrow:last-of-type {
+  right: 4%;
+}
+
+.description {
+  margin-top: 90px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+}

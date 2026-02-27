@@ -8,7 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@apollo/server": "^5.4.0",
+    "@as-integrations/next": "^4.1.0",
     "axios": "^1.13.5",
+    "env": "^0.0.2",
+    "graphql": "^16.13.0",
+    "mongo": "^0.1.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"
